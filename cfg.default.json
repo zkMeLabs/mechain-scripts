@@ -1,0 +1,5 @@
+{
+  "rpc": "http://127.0.0.1:8545",
+  "contracts": "/Users/xxx/Code/zkme/mechain/solidity/artifacts/contracts",
+  "storageAddress": "0x0000000000000000000000000000000000002000"
+}
