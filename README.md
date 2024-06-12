@@ -9,7 +9,7 @@ This is an mechain chain smart contract interface call example framework based o
 - Execute `npm intall` in the project directory to install dependencies.
 - `cfg.default.json` serves as a blueprint; copy its contents to a new file named `cfg.json`. Update the configuration according to your needs.
 - Prepare an `abi` file in json format
-- Run the JavaScript file, such as `storage/01_createBucket.js`
+- Run the JavaScript file, such as `cd storage` then `node 01_createBucket.js`
 
 
 
