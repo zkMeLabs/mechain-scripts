@@ -4,23 +4,35 @@ import path from 'path';
 
 export const main = async () => {
   try {
-    const { rpc, contracts, stakingAddress } = await fs.readJSON('../cfg.json');
+    const { rpc, contracts, storageAddress } = await fs.readJSON('../cfg.json');
     const { abi } = await fs.readJSON(path.join(contracts, 'storage/IStorage.sol/IStorage.json'));
     const provider = new ethers.JsonRpcProvider(rpc);
 
     // input params
-    const privateKey = '54a2d3ac86cd0ce2c3af91a930d9a77199c658edf9af8341991e3622f2d9b521';
+    const privateKey = 'f78a036930ce63791ea6ea20072986d8c3f16a6811f6a2583b0787c45086f769';
     const wallet = new ethers.Wallet(privateKey, provider);
-    const description = ['join node', 'identity', 'http://cosmos.lucq.fun', 'security contract', 'It is my details'];
-    const commission = ['100000000000000000', '100000000000000000', '100000000000000000'];
-    const minSelfDelegation = '1';
-    const pubkey = 'nb3QcA9Qth8q/Eoqr/SYHGAiW2U+eD+2iKrwMCF+vxw=';
-    const value = '100000000000000000000';
+    const bucketName = 'mechain' + new Date().getTime();
+    const visibility = 2;
+    const paymentAddress = wallet.address;
+    const primarySpAddress = '0xdDae3F957309cb8ED4621C6648669455E958215B';
+    const approval = {
+      expiredHeight: 0,
+      globalVirtualGroupFamilyId: 1,
+      sig: '0x00',
+    };
+    const chargedReadQuota = '100000000000000';
 
-    const staking = new ethers.Contract(stakingAddress, abi, wallet);
-    const tx = await staking.createValidator(description, commission, minSelfDelegation, pubkey, value);
+    const storage = new ethers.Contract(storageAddress, abi, wallet);
+    const tx = await storage.createBucket(
+      bucketName,
+      visibility,
+      paymentAddress,
+      primarySpAddress,
+      approval,
+      chargedReadQuota
+    );
     const receipt = await tx.wait();
-    console.log('create validator success, receipt: ', receipt);
+    console.log('create bucket success, receipt: ', receipt);
   } catch (error) {
     console.log('error', error);
   }
