@@ -3,7 +3,8 @@
 This is an mechain chain smart contract interface call example framework based on node.js, which encapsulates a wealth of contract call interface examples. It includes three major module interfaces: `storage` and `bank`, through which you can interact with the contract.
 
 ## Usage Steps
-
+- Install [Abigen](https://geth.ethereum.org/docs/tools/abigen)
+- In the dir `mechain/x/evm/precompiles` run `sh compile.sh`
 - Install Node.js, version `v20.x`.
 - Execute `npm intall` in the project directory to install dependencies.
 - `cfg.default.json` serves as a blueprint; copy its contents to a new file named `cfg.json`. Update the configuration according to your needs.
