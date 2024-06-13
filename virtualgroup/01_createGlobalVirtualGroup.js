@@ -9,10 +9,10 @@ export const main = async () => {
     const provider = new ethers.JsonRpcProvider(rpc);
 
     // input params
-    const privateKey = '291819455d1beae7626a5361a03f7deb1a953d4c2409d6db1dd025905fcf7c24'; // YOU SP PRIVATE KEY
+    const privateKey = '40305a2854ce62cf718cc30224b84245812e22f1e8a0de31443dc7d16a80d173'; // YOU SP PRIVATE KEY
     const wallet = new ethers.Wallet(privateKey, provider);
     const familyId = 0;
-    const secondarySpIds = [1, 3, 4, 5, 6, 7];
+    const secondarySpIds = [2, 3, 4, 5, 6, 7];
     const deposit = {
       amount: '1000000000000000000',
       denom: 'azkme',

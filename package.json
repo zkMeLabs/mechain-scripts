@@ -10,7 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@bnb-chain/reed-solomon": "^1.1.3",
     "ethers": "^6.10.0",
-    "fs-extra": "^11.2.0"
+    "fs-extra": "^11.2.0",
+    "mime-types": "^2.1.35"
   }
 }
