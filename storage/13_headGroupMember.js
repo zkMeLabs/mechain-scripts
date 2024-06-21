@@ -7,12 +7,13 @@ export const main = async () => {
   const { abi } = await fs.readJSON(path.join(contracts, 'storage/IStorage.sol/IStorage.json'));
   const provider = new ethers.JsonRpcProvider(rpc);
 
-  const bucketName = 'testabc';
+  const member = '0x2C3a8b5E870478DD2370D0C2f85d8aeCD04871fE';
+  const groupOwner = '0x62d574476d10f5745DC0c686c280762f97251c8a';
+  const groupName = 'mechain';
 
   const storage = new ethers.Contract(storageAddress, abi, provider);
-  const [bucketinfo, extrainfo] = await storage.headBucket(bucketName);
-  console.log('bucket:', bucketinfo.toObject(true));
-  console.log('extrainfo:', extrainfo.toObject(true));
+  const groupinfo = await storage.headGroup(member, groupOwner, groupName);
+  console.log('groupmember:', groupinfo.toObject(true));
 };
 
 main();
