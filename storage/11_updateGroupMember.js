@@ -15,9 +15,11 @@ export const main = async () => {
     const groupOwner = '0x62d574476d10f5745DC0c686c280762f97251c8a';
 
     const membersToAdd = [
-      { member: '0x757F0F85A5184c4E0183525EbD8fEdcD53b7eF80', expirationTime: 1720000000 },
-      { member: '0xf0c2B9aaca1ce4e587e8f69D94F568BF051b2484', expirationTime: 1720000000 }
+      '0x757F0F85A5184c4E0183525EbD8fEdcD53b7eF80', '0xf0c2B9aaca1ce4e587e8f69D94F568BF051b2484'
     ];
+    const expirationTime = [
+      '1720000000', 0
+    ]
     const membersToDelete = [
       '0x1A4eCc4333F72F910583610Ec835a26f2779109d', '0x3c6Ae7CC0F1E88675c1CD5587E216B03624E50cd'
     ];
@@ -27,6 +29,7 @@ export const main = async () => {
       groupOwner,
       groupName,
       membersToAdd,
+      expirationTime,
       membersToDelete
     );
     const receipt = await tx.wait();

@@ -12,7 +12,7 @@ export const main = async () => {
   const groupName = 'mechain';
 
   const storage = new ethers.Contract(storageAddress, abi, provider);
-  const groupinfo = await storage.headGroup(member, groupOwner, groupName);
+  const groupinfo = await storage.headGroupMember(member, groupOwner, groupName);
   console.log('groupmember:', groupinfo.toObject(true));
 };
 
