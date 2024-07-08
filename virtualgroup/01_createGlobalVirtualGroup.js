@@ -9,7 +9,7 @@ export const main = async () => {
     const provider = new ethers.JsonRpcProvider(rpc);
 
     // input params
-    const privateKey = '40305a2854ce62cf718cc30224b84245812e22f1e8a0de31443dc7d16a80d173'; // YOU SP PRIVATE KEY
+    const privateKey = 'f23c66cac34f5a518b7da358e1e85bb89d6abcd9213941b218a35b56932a09e9'; // YOU SP PRIVATE KEY
     const wallet = new ethers.Wallet(privateKey, provider);
     const familyId = 0;
     const secondarySpIds = [2, 3, 4, 5, 6, 7];

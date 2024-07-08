@@ -45,20 +45,22 @@ const main = async () => {
     }
   );
 
-  console.log('upload object ret', uploadRes);
-
-  console.log('sleep 6s wait sp node seal object...');
-  await sleep(6000);
-  console.log('try download object...');
-  https
-    .get(`${endpoint}/${bucketName}/${objectName}`, (res) => {
-      res.on('data', (data) => {
-        console.log('statusCode:', res.statusCode, 'data = ', data.toString());
+  if (uploadRes.code == 0) {
+    console.log('sleep 6s wait sp node seal object...');
+    await sleep(6000);
+    console.log('try download object...');
+    https
+      .get(`${endpoint}/${bucketName}/${objectName}`, (res) => {
+        res.on('data', (data) => {
+          console.log('statusCode:', res.statusCode, 'data = ', data.toString());
+        });
+      })
+      .on('error', (e) => {
+        console.error(e);
       });
-    })
-    .on('error', (e) => {
-      console.error(e);
-    });
+  } else {
+    console.log('upload object fail, ret', uploadRes);
+  }
 };
 
 main();

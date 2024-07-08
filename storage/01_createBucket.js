@@ -11,10 +11,10 @@ export const main = async () => {
     // input params
     const privateKey = 'f78a036930ce63791ea6ea20072986d8c3f16a6811f6a2583b0787c45086f769'; // YOU PRIVATE KEY
     const wallet = new ethers.Wallet(privateKey, provider);
-    const bucketName = 'mechain' + new Date().getTime();
+    const bucketName = 'mechain';
     const visibility = 2;
     const paymentAddress = wallet.address;
-    const primarySpAddress = '0xdDae3F957309cb8ED4621C6648669455E958215B'; // PLEASE UPDATE
+    const primarySpAddress = '0xdB21810483795c3482851810A9CAEa1588425B83'; // PLEASE UPDATE
     const approval = {
       expiredHeight: 0,
       globalVirtualGroupFamilyId: 1,

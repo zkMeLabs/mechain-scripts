@@ -1,5 +1,5 @@
 diff --git a/node_modules/@bnb-chain/greenfield-js-sdk/dist/cjs/index.js b/node_modules/@bnb-chain/greenfield-js-sdk/dist/cjs/index.js
-index 468bd2c..710479f 100644
+index 468bd2c..5e0197c 100644
 --- a/node_modules/@bnb-chain/greenfield-js-sdk/dist/cjs/index.js
 +++ b/node_modules/@bnb-chain/greenfield-js-sdk/dist/cjs/index.js
 @@ -46,8 +46,8 @@ var tx$7 = require('@bnb-chain/greenfield-cosmos-types/greenfield/bridge/tx');
@@ -52,6 +52,15 @@ index 468bd2c..710479f 100644
      let queryMap = {};
      if (delegatedOpts) {
          queryMap = {
+@@ -2762,7 +2767,7 @@ const getPutObjectMetaInfo = (endpoint, params) => __awaiter(void 0, void 0, voi
+         txnHash: txnHash,
+         method: METHOD_PUT,
+         url: {
+-            hostname: url.hostname,
++            hostname: url.host,
+             query: url.searchParams.toString(),
+             path,
+         },
 diff --git a/node_modules/@bnb-chain/greenfield-js-sdk/dist/esm/api/account.d.ts b/node_modules/@bnb-chain/greenfield-js-sdk/dist/esm/api/account.d.ts
 index bfae20a..4f380d9 100644
 --- a/node_modules/@bnb-chain/greenfield-js-sdk/dist/esm/api/account.d.ts
