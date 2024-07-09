@@ -1,4 +1,4 @@
-import { ethers } from "ethers";
+import { ethers, ZeroAddress } from "ethers";
 import fs from "fs-extra";
 import path from "path";
 
@@ -16,14 +16,14 @@ export const main = async () => {
     const wallet = new ethers.Wallet(privateKey, provider);
     const bucketName = "mechain";
     const paymentAddress = wallet.address;
-    const visibility = 2;
+    const visibility = 1;
     const chargedReadQuota = "1000000000000000";
 
     const storage = new ethers.Contract(storageAddress, abi, wallet);
     const tx = await storage.updateBucketInfo(
       bucketName,
       visibility,
-      "0x0000000000000000000000000000000000000000",
+      ZeroAddress,
       chargedReadQuota
     );
     const receipt = await tx.wait();
