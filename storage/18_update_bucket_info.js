@@ -17,16 +17,14 @@ export const main = async () => {
     const bucketName = "mechain";
     const paymentAddress = wallet.address;
     const visibility = 1;
-    const chargedReadQuota = "100000000000000";
+    const chargedReadQuota = "200000000000000";
 
     const storage = new ethers.Contract(storageAddress, abi, wallet);
-    const mask = 7;
     const tx = await storage.updateBucketInfo(
       bucketName,
       visibility,
       paymentAddress,
-      chargedReadQuota,
-      mask
+      chargedReadQuota
     );
     const receipt = await tx.wait();
     console.log("delete bucket success, receipt: ", receipt);
