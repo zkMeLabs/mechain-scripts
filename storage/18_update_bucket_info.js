@@ -16,14 +16,14 @@ export const main = async () => {
     const wallet = new ethers.Wallet(privateKey, provider);
     const bucketName = "mechain";
     const paymentAddress = wallet.address;
-    const visibility = 1;
-    const chargedReadQuota = "200000000000000";
+    const visibility = 2;
+    const chargedReadQuota = "1000000000000000";
 
     const storage = new ethers.Contract(storageAddress, abi, wallet);
     const tx = await storage.updateBucketInfo(
       bucketName,
       visibility,
-      paymentAddress,
+      "0x0000000000000000000000000000000000000000",
       chargedReadQuota
     );
     const receipt = await tx.wait();
