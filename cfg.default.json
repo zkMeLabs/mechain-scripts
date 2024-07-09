@@ -2,5 +2,7 @@
   "rpc": "http://127.0.0.1:8545",
   "contracts": "/Users/xxx/Code/zkme/mechain/solidity/artifacts/contracts",
   "virtualGroupAddress": "0x0000000000000000000000000000000000002000",
-  "storageAddress": "0x0000000000000000000000000000000000002001"
+  "storageAddress": "0x0000000000000000000000000000000000002001",
+  "private_key": "ac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80",
+  "primarySpAddress": "0xdDae3F957309cb8ED4621C6648669455E958215B"
 }
