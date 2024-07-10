@@ -14,7 +14,7 @@ export const main = async () => {
     // input params
     const wallet = new ethers.Wallet(privateKey, provider);
     const groupName = 'mechain';
-    const groupOwner = '0x62d574476d10f5745DC0c686c280762f97251c8a';
+    const groupOwner = wallet.address;
 
     const membersToAdd = [
       '0x757F0F85A5184c4E0183525EbD8fEdcD53b7eF80',

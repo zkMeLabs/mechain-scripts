@@ -9,7 +9,7 @@ export const main = async () => {
   );
   const provider = new ethers.JsonRpcProvider(rpc);
 
-  const bucketName = 'testabc';
+  const bucketName = 'mechain';
 
   const storage = new ethers.Contract(storageAddress, abi, provider);
   const [bucketInfo, extraInfo] = await storage.headBucket(bucketName);
