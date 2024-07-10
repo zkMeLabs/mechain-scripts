@@ -8,11 +8,9 @@ export const main = async () => {
   try {
     const filePath = './go.sum';
     const fileBuffer = fs.readFileSync(filePath);
+    const { privateKey } = await fs.readJSON('../cfg.json');
 
     // input params
-    const privateKey = '0x56923b898a962a361f406d1077b056df9480d06c661104f6d74e5d25bbba9a23'; // YOU PRIVATE KEY
-    // const bucketName = 'mechain';
-    // const objectName = 'go.sum';
     const payloadSize = fileBuffer.length;
     const contentType = 'application/octet-stream';
     const currentDate = new Date().toISOString();
@@ -27,7 +25,7 @@ export const main = async () => {
       'x-gnfd-expiry-timestamp:' + expiryTimestamp,
       '192.168.0.99:9033',
       '',
-      'content-type;x-gnfd-content-sha256;x-gnfd-date;x-gnfd-expiry-timestamp'
+      'content-type;x-gnfd-content-sha256;x-gnfd-date;x-gnfd-expiry-timestamp',
     ].join('\n');
     const canonicalRequestBytes = utf8ToBytes(canonicalRequest);
     const unsignedMsg = keccak256(canonicalRequestBytes);
@@ -45,28 +43,29 @@ export const main = async () => {
       path: '/mechain/go.sum',
       httpVersion: 1.1,
       headers: {
-        'HOST': '192.168.0.99:9033',
+        HOST: '192.168.0.99:9033',
         'User-Agent': 'Greenfield (linux; amd64) greenfield-go-sdk/v0.1.0',
         'Content-Length': payloadSize,
-        'Authorization': authorization,
+        Authorization: authorization,
         'Content-Type': contentType,
-        'X-Gnfd-Content-Sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+        'X-Gnfd-Content-Sha256':
+          'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
         'X-Gnfd-Date': currentDate,
         'X-Gnfd-Expiry-Timestamp': expiryTimestamp,
-        'Accept-Encoding': 'gzip'
+        'Accept-Encoding': 'gzip',
       },
-      body: fileBuffer
+      body: fileBuffer,
     };
 
     fetch('http://192.168.0.99:9033/mechain/go.sum', options)
-      .then(response => {
+      .then((response) => {
         if (response.ok) {
           console.log('File data sent successfully!');
         } else {
           console.error('Failed to send file data:', response.status);
         }
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('Error:', error);
       });
   } catch (error) {
