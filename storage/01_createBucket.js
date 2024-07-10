@@ -7,7 +7,7 @@ export const main = async () => {
     const { rpc, contracts, storageAddress, privateKey, primarySpAddress } =
       await fs.readJSON("../cfg.json");
     const { abi } = await fs.readJSON(
-      path.join(contracts, "storage/IStorage.sol/IStorage.json")
+      path.join(contracts, "storage/IStorage.sol/IStorage.json"),
     );
     const provider = new ethers.JsonRpcProvider(rpc);
 
@@ -30,7 +30,7 @@ export const main = async () => {
       paymentAddress,
       primarySpAddress,
       approval,
-      chargedReadQuota
+      chargedReadQuota,
     );
     const receipt = await tx.wait();
     console.log("create bucket success, receipt: ", receipt);
