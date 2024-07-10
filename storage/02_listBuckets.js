@@ -4,7 +4,9 @@ import path from 'path';
 
 export const main = async () => {
   const { rpc, contracts, storageAddress } = await fs.readJSON('../cfg.json');
-  const { abi } = await fs.readJSON(path.join(contracts, 'storage/IStorage.sol/IStorage.json'));
+  const { abi } = await fs.readJSON(
+    path.join(contracts, 'storage/IStorage.sol/IStorage.json'),
+  );
   const provider = new ethers.JsonRpcProvider(rpc);
 
   // input params

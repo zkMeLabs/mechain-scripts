@@ -4,7 +4,9 @@ import path from 'path';
 
 export const main = async () => {
   const { rpc, contracts, storageAddress } = await fs.readJSON('../cfg.json');
-  const { abi } = await fs.readJSON(path.join(contracts, 'storage/IStorage.sol/IStorage.json'));
+  const { abi } = await fs.readJSON(
+    path.join(contracts, 'storage/IStorage.sol/IStorage.json'),
+  );
   const provider = new ethers.JsonRpcProvider(rpc);
 
   const member = '0x2C3a8b5E870478DD2370D0C2f85d8aeCD04871fE';
@@ -12,7 +14,11 @@ export const main = async () => {
   const groupName = 'mechain';
 
   const storage = new ethers.Contract(storageAddress, abi, provider);
-  const groupinfo = await storage.headGroupMember(member, groupOwner, groupName);
+  const groupinfo = await storage.headGroupMember(
+    member,
+    groupOwner,
+    groupName,
+  );
   console.log('groupmember:', groupinfo.toObject(true));
 };
 

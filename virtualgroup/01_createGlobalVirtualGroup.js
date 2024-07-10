@@ -1,13 +1,13 @@
-import { ethers } from "ethers";
-import fs from "fs-extra";
-import path from "path";
+import { ethers } from 'ethers';
+import fs from 'fs-extra';
+import path from 'path';
 
 export const main = async () => {
   try {
     const { rpc, contracts, virtualGroupAddress, privateKey } =
-      await fs.readJSON("../cfg.json");
+      await fs.readJSON('../cfg.json');
     const { abi } = await fs.readJSON(
-      path.join(contracts, "virtualgroup/IVirtualGroup.sol/IVirtualGroup.json"),
+      path.join(contracts, 'virtualgroup/IVirtualGroup.sol/IVirtualGroup.json'),
     );
     const provider = new ethers.JsonRpcProvider(rpc);
 
@@ -16,8 +16,8 @@ export const main = async () => {
     const familyId = 0;
     const secondarySpIds = [2, 3, 4, 5, 6, 7];
     const deposit = {
-      amount: "1000000000000000000",
-      denom: "azkme",
+      amount: '1000000000000000000',
+      denom: 'azkme',
     };
 
     const virtualGroup = new ethers.Contract(virtualGroupAddress, abi, wallet);
@@ -27,9 +27,9 @@ export const main = async () => {
       deposit,
     );
     const receipt = await tx.wait();
-    console.log("create global virtual group success, receipt: ", receipt);
+    console.log('create global virtual group success, receipt: ', receipt);
   } catch (error) {
-    console.log("error", error);
+    console.log('error', error);
   }
 };
 

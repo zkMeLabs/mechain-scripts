@@ -1,27 +1,27 @@
-import { ethers } from "ethers";
-import fs from "fs-extra";
-import path from "path";
+import { ethers } from 'ethers';
+import fs from 'fs-extra';
+import path from 'path';
 
 export const main = async () => {
   try {
     const { rpc, contracts, storageAddress, privateKey, primarySpAddress } =
-      await fs.readJSON("../cfg.json");
+      await fs.readJSON('../cfg.json');
     const { abi } = await fs.readJSON(
-      path.join(contracts, "storage/IStorage.sol/IStorage.json"),
+      path.join(contracts, 'storage/IStorage.sol/IStorage.json'),
     );
     const provider = new ethers.JsonRpcProvider(rpc);
 
     // input params
     const wallet = new ethers.Wallet(privateKey, provider);
-    const bucketName = "mechain";
+    const bucketName = 'mechain';
     const visibility = 2;
     const paymentAddress = wallet.address;
     const approval = {
       expiredHeight: 0,
       globalVirtualGroupFamilyId: 1,
-      sig: "0x00",
+      sig: '0x00',
     };
-    const chargedReadQuota = "100000000000000";
+    const chargedReadQuota = '100000000000000';
 
     const storage = new ethers.Contract(storageAddress, abi, wallet);
     const tx = await storage.createBucket(
@@ -33,9 +33,9 @@ export const main = async () => {
       chargedReadQuota,
     );
     const receipt = await tx.wait();
-    console.log("create bucket success, receipt: ", receipt);
+    console.log('create bucket success, receipt: ', receipt);
   } catch (error) {
-    console.log("error", error);
+    console.log('error', error);
   }
 };
 
