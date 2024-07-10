@@ -12,13 +12,11 @@ export const main = async () => {
   const provider = new ethers.JsonRpcProvider(rpc);
 
   // input params
-  const bucketName = "mechain";
-  const objectName = "random_file";
+  const objectId = "1";
 
   const storage = new ethers.Contract(storageAddress, abi, provider);
-  const [objectInfo, globalVirtualGroup] = await storage.headObject(
-    bucketName,
-    objectName
+  const [objectInfo, globalVirtualGroup] = await storage.headObjectById(
+    objectId
   );
   console.log("objectInfo:", objectInfo.toObject(true));
   console.log("globalVirtualGroup:", globalVirtualGroup.toObject(true));
