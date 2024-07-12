@@ -3,7 +3,7 @@
   "contracts": "/Users/xxx/Code/zkme/mechain/solidity/artifacts/contracts",
   "virtualGroupAddress": "0x0000000000000000000000000000000000002000",
   "storageAddress": "0x0000000000000000000000000000000000002001",
-  "private_key": "ac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80",
-  "primarySpAddress": "0xdDae3F957309cb8ED4621C6648669455E958215B",
+  "privateKey": "f78a036930ce63791ea6ea20072986d8c3f16a6811f6a2583b0787c45086f769",
+  "primarySpAddress": "0xc1A979b06dF9221749571eFD6d9DC99cCFCa82A2",
   "sealAddress": "0x26F10022BE8e14D06180BBaA22ED28D70CB03a25"
 }

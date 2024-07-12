@@ -19,7 +19,6 @@ export const main = async () => {
     const approval = {
       expiredHeight: 0,
       globalVirtualGroupFamilyId: 1,
-
       sig: '0x00',
     };
     const chargedReadQuota = '100000000000000';

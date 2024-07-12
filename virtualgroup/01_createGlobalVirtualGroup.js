@@ -4,7 +4,7 @@ import path from 'path';
 
 export const main = async () => {
   try {
-    const { rpc, contracts, virtualGroupAddress, privateKey } =
+    const { rpc, contracts, virtualGroupAddress } =
       await fs.readJSON('../cfg.json');
     const { abi } = await fs.readJSON(
       path.join(contracts, 'virtualgroup/IVirtualGroup.sol/IVirtualGroup.json'),
@@ -12,6 +12,7 @@ export const main = async () => {
     const provider = new ethers.JsonRpcProvider(rpc);
 
     // input params
+    const privateKey = "ebbeb28b89bc7ec5da6441ed70452cc413f96ea33a7c790aba06810ae441b776"
     const wallet = new ethers.Wallet(privateKey, provider);
     const familyId = 0;
     const secondarySpIds = [2, 3, 4, 5, 6, 7];
