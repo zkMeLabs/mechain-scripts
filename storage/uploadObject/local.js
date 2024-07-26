@@ -25,7 +25,7 @@ const main = async () => {
     '0xf78a036930ce63791ea6ea20072986d8c3f16a6811f6a2583b0787c45086f769'; // YOU PRIVATE KEY
 
   // putObject
-  const client = Client.create('http://localhost:26657', '100000');
+  const client = Client.create('http://localhost:26657', '5151');
   const endpoint = 'http://node1.dev:9033';
   const txnHash =
     'D044FDCC1A3F3F79F5CC18EF5C47A42F41C6F2D9B0A3EBC59B4969819BE86938';
@@ -52,24 +52,25 @@ const main = async () => {
   if (uploadRes.code == 0) {
     console.log('sleep 6s wait sp node seal object...');
     await sleep(6000);
-    console.log('try download object...');
-    http
-      .get(`${endpoint}/${bucketName}/${objectName}`, (res) => {
-        res.on('data', (data) => {
-          console.log(
-            'statusCode:',
-            res.statusCode,
-            'data = ',
-            data.toString(),
-          );
-        });
-      })
-      .on('error', (e) => {
-        console.error(e);
-      });
   } else {
     console.log('upload object fail, ret', uploadRes);
   }
+
+  console.log('anyway, try download object...');
+  http
+    .get(`${endpoint}/${bucketName}/${objectName}`, (res) => {
+      res.on('data', (data) => {
+        console.log(
+          'statusCode:',
+          res.statusCode,
+          'data = ',
+          data.toString(),
+        );
+      });
+    })
+    .on('error', (e) => {
+      console.error(e);
+    });
 };
 
 main();
