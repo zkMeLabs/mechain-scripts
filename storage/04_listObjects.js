@@ -17,7 +17,7 @@ export const main = async () => {
     countTotal: false,
     reverse: false,
   };
-  const bucketName = 'mechain';
+  const bucketName = 'zkme';
 
   const storage = new ethers.Contract(storageAddress, abi, provider);
   const [objects, pageResponse] = await storage.listObjects(

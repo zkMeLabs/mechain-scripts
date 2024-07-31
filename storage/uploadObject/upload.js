@@ -25,7 +25,7 @@ const main = async () => {
     '0xf78a036930ce63791ea6ea20072986d8c3f16a6811f6a2583b0787c45086f769'; // YOU PRIVATE KEY
 
   // putObject
-  const client = Client.create('http://devnet-lcd.mechain.tech', '100000');
+  const client = Client.create('https://devnet-lcd.mechain.tech', '5151');
   const endpoint = 'https://devnet-sp0-rpc.mechain.tech';
   const txnHash =
     'D044FDCC1A3F3F79F5CC18EF5C47A42F41C6F2D9B0A3EBC59B4969819BE86938';

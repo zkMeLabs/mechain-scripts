@@ -18,7 +18,7 @@ export const main = async () => {
     const secondarySpIds = [2, 3, 4, 5, 6, 7];
     const deposit = {
       amount: '1000000000000000000',
-      denom: 'azkme',
+      denom: 'ame',
     };
 
     const virtualGroup = new ethers.Contract(virtualGroupAddress, abi, wallet);

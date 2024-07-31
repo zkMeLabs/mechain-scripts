@@ -13,7 +13,7 @@ export const main = async () => {
 
     // input params
     const wallet = new ethers.Wallet(privateKey, provider);
-    const bucketName = 'mechain';
+    const bucketName = 'zkme';
     const visibility = 2;
     const paymentAddress = wallet.address;
     const approval = {

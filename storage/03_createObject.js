@@ -33,7 +33,7 @@ export const main = async () => {
 
     // input params
     const wallet = new ethers.Wallet(privateKey, provider);
-    const bucketName = 'mechain';
+    const bucketName = 'zkme';
     const objectName = randData(8);
     const payloadSize = fileBuffer.length;
     const visibility = 1;
