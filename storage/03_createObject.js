@@ -17,8 +17,14 @@ export const randData = (size) => {
 
 export const main = async () => {
   try {
-    const cfg = await fs.readJSON('../cfg.json');
-    const { rpc, contracts, storageAddress, privateKey } = cfg;
+    const {
+      rpc,
+      contracts,
+      storageAddress,
+      privateKey,
+      bucketName,
+      objectName,
+    } = await fs.readJSON('../cfg.json');
     const { abi } = await fs.readJSON(
       path.join(contracts, 'storage/IStorage.sol/IStorage.json'),
     );
@@ -33,8 +39,6 @@ export const main = async () => {
 
     // input params
     const wallet = new ethers.Wallet(privateKey, provider);
-    const bucketName = 'zkme';
-    const objectName = randData(8);
     const payloadSize = fileBuffer.length;
     const visibility = 1;
     const contentType = lookup(extname);
@@ -65,8 +69,6 @@ export const main = async () => {
     );
     const receipt = await tx.wait();
     console.log('create object success, receipt: ', receipt);
-
-    fs.writeJSON('../cfg.json', Object.assign(cfg, { bucketName, objectName }));
   } catch (error) {
     console.log('error', error);
   }

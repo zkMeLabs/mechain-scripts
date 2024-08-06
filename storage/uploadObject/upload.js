@@ -9,7 +9,8 @@ const sleep = (ms) => {
 };
 
 const main = async () => {
-  const { bucketName, objectName } = await fs.readJSON('../../cfg.json');
+  const { bucketName, objectName, privateKey } =
+    await fs.readJSON('../../cfg.json');
 
   const filePath = path.join('.', 'temp.txt');
   const fileBuffer = fs.readFileSync(filePath);
@@ -19,10 +20,6 @@ const main = async () => {
   console.log(
     `bucketName = ${bucketName}, objectName = ${objectName}, data = ${fileBuffer.toString()}`,
   );
-
-  // input params
-  const privateKey =
-    '0xf78a036930ce63791ea6ea20072986d8c3f16a6811f6a2583b0787c45086f769'; // YOU PRIVATE KEY
 
   // putObject
   const client = Client.create('https://devnet-lcd.mechain.tech', '5151');
