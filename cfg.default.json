@@ -5,5 +5,7 @@
   "storageAddress": "0x0000000000000000000000000000000000002001",
   "privateKey": "f78a036930ce63791ea6ea20072986d8c3f16a6811f6a2583b0787c45086f769",
   "primarySpAddress": "0xc1A979b06dF9221749571eFD6d9DC99cCFCa82A2",
-  "sealAddress": "0x26F10022BE8e14D06180BBaA22ED28D70CB03a25"
+  "sealAddress": "0x26F10022BE8e14D06180BBaA22ED28D70CB03a25",
+  "bucketName": "mechain",
+  "objectName": "temp.txt"
 }
