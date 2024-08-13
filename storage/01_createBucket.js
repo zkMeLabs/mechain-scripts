@@ -11,7 +11,6 @@ export const main = async () => {
       privateKey,
       primarySpAddress,
       bucketName,
-      objectName,
     } = await fs.readJSON('../cfg.json');
     const { abi } = await fs.readJSON(
       path.join(contracts, 'storage/IStorage.sol/IStorage.json'),
