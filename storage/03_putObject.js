@@ -1,4 +1,6 @@
+import { ethers } from 'ethers';
 import fs from 'fs-extra';
+import path from 'path';
 import { joinSignature } from '@ethersproject/bytes';
 import { SigningKey } from '@ethersproject/signing-key';
 import { keccak256 } from 'ethereum-cryptography/keccak.js';
@@ -8,15 +10,44 @@ export const main = async () => {
   try {
     const filePath = './uploadObject/temp.txt';
     const fileBuffer = fs.readFileSync(filePath);
-    const { bucketName, objectName, privateKey } =
+    const { bucketName, objectName, privateKey, rpc, contracts, storageAddress, virtualGroupAddress } =
       await fs.readJSON('../cfg.json');
 
+    const { abi: storageAbi } = await fs.readJSON(
+      path.join(contracts, 'storage/IStorage.sol/IStorage.json'),
+    );
+    const { abi: virtualGroupAbi } = await fs.readJSON(
+      path.join(contracts, 'virtualgroup/IVirtualGroup.sol/IVirtualGroup.json'),
+    );
+    const provider = new ethers.JsonRpcProvider(rpc);
+    const storage = new ethers.Contract(storageAddress, storageAbi, provider);
+    const [bucketInfo, extraInfo] = await storage.headBucket(bucketName);
+    let globalVirtualGroupFamilyId = bucketInfo.globalVirtualGroupFamilyId;
+
+    const pageRequest = {
+      key: '0x00',
+      offset: 0,
+      limit: 100,
+      countTotal: false,
+      reverse: false,
+    };
+    const virtualGroup = new ethers.Contract(virtualGroupAddress, virtualGroupAbi, provider);
+    const [gvgFamilies, pageResponse] = await virtualGroup.globalVirtualGroupFamilies(pageRequest);
+    let spid = 0;
+    for (const gvgFamily of gvgFamilies) {
+      if (gvgFamily.id === globalVirtualGroupFamilyId) {
+        spid = gvgFamily.primarySpId;
+        break;
+      }
+    }
     // input params
     const payloadSize = fileBuffer.length;
     const contentType = 'application/octet-stream';
     const currentDate = new Date().toISOString();
     const expiryTimestamp = new Date(Date.now() + 1000 * 1000).toISOString();
-    const sphost = '154.48.244.45:9036'; //sphost ip:port
+    const sphosts = ['154.48.244.45:9033', '154.48.244.45:9034', '154.48.244.45:9035', '154.48.244.45:9036', '154.48.244.45:9037', '154.48.244.45:9038', '154.48.244.45:9039', '154.48.244.45:9040'];
+    let sphost = sphosts[spid - BigInt(1)];
+    console.log('sphost', sphost);
     const canonicalRequest = [
       'PUT',
       '/' + bucketName + '/' + objectName,
