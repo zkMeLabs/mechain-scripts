@@ -4,7 +4,7 @@ import path from 'path';
 
 export const main = async () => {
   try {
-    const { rpc, contracts, storageAddress, privateKey } =
+    const { rpc, contracts, storageAddress, privateKey, bucketName } =
       await fs.readJSON('../cfg.json');
     const { abi } = await fs.readJSON(
       path.join(contracts, 'storage/IStorage.sol/IStorage.json'),
@@ -13,7 +13,6 @@ export const main = async () => {
 
     // input params
     const wallet = new ethers.Wallet(privateKey, provider);
-    const bucketName = 'mechain';
     const paymentAddress = wallet.address;
     const visibility = 1;
     const chargedReadQuota = '1000000000000000';

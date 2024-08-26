@@ -4,7 +4,7 @@ import path from 'path';
 
 export const main = async () => {
   try {
-    const { rpc, contracts, storageAddress, privateKey } =
+    const { rpc, contracts, storageAddress, privateKey, groupName } =
       await fs.readJSON('../cfg.json');
     const { abi } = await fs.readJSON(
       path.join(contracts, 'storage/IStorage.sol/IStorage.json'),
@@ -13,7 +13,6 @@ export const main = async () => {
 
     // input params
     const wallet = new ethers.Wallet(privateKey, provider);
-    const groupName = 'mechain';
     const groupOwner = wallet.address;
 
     const membersToAdd = [
@@ -22,8 +21,8 @@ export const main = async () => {
     ];
     const expirationTime = ['1720000000', 0];
     const membersToDelete = [
-      '0x1A4eCc4333F72F910583610Ec835a26f2779109d',
-      '0x3c6Ae7CC0F1E88675c1CD5587E216B03624E50cd',
+      // '0x1A4eCc4333F72F910583610Ec835a26f2779109d',
+      // '0x3c6Ae7CC0F1E88675c1CD5587E216B03624E50cd',
     ];
 
     const storage = new ethers.Contract(storageAddress, abi, wallet);
