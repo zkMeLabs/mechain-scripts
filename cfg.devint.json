@@ -1,0 +1,12 @@
+{
+  "rpc": "http://154.223.178.5:8545",
+  "contracts": "/home/user/zkmelabs/mechain/solidity/artifacts/contracts",
+  "virtualGroupAddress": "0x0000000000000000000000000000000000002000",
+  "storageAddress": "0x0000000000000000000000000000000000002001",
+  "privateKey": "c5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470",
+  "primarySpAddress": "0x64b834C41a1F2362dE03b169926dC5b2AB38c0e7",
+  "sealAddress": "0x1111102Dd32160B064F2A512CDEf74bFdB6a9F96",
+  "bucketName": "mechain001",
+  "objectName": "test.txt",
+  "groupName": "kevin_group"
+}
