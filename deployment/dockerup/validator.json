@@ -1,0 +1,26 @@
+{
+  "validator0": {
+    "priv_key": "369273faf624b4318e972bc900ae56825741557557a91656f281210845a014f0",
+    "bls_key": "3ac1ed8df2f071e44f0e16955f09d782393e8cc3c7542001303fc2003077ff9c",
+    "relayer_key": "47971236b4fbc5aa26c05f88ab4e834902ef004c833783599f907cbf76cf5150",
+    "challenger_key": "aca8b00a5ee001174414a3b505bd96d1d5ac077239975994f42ee9bb1afc4733"
+  },
+  "validator1": {
+    "priv_key": "1ffe0d57c103df0e0e90ad49eaa5374dcdac6557036e211c1e300a8297226086",
+    "bls_key": "2d2877131768fed72d8fb7bc12cbf16bfcaa85e9a8c5f2789866ebe782b69e22",
+    "relayer_key": "5e22ca6b2322b10d5e54bea0021ab4d694a4d08aedf60d882244623574958bdb",
+    "challenger_key": "7c0eecaf8bb3c645442cc713d07ebcc4e5935f478816bf568ce9bbd5e172a71e"
+  },
+  "validator2": {
+    "priv_key": "8628a9b5c3c3371b504609070c75b228e551190c2367007f66190ff5d028f724",
+    "bls_key": "48053921a658d3de4d674d6cbf7ac91bfeb88983fb289de43ec0b749ac8bc86d",
+    "relayer_key": "a84ee94afa23b47800c7c9d6158d66e597ec239bb6ff05b804f8a53211e375b2",
+    "challenger_key": "443be03fab9a3476f6746fa40a74166dec4b0c0ffa191f0cf4da0ab4fdebbb50"
+  },
+  "validator3": {
+    "priv_key": "6919ac6c20a98bbbf6a514915ddacc0cc935099626967d616812a1195449fbf9",
+    "bls_key": "663227626fa188f5ed3ffcec3a064bd64eea0477973cfb31367ad804a8b8584f",
+    "relayer_key": "f763ba5694f4b7fbd73d35d9f868e816e67bd242900e2b72a66c2650dea5db49",
+    "challenger_key": "0cac1714c34e399c44e0dcf5184c9179b7cfce06eefa5da8e8c061c6401039dd"
+  }
+}
