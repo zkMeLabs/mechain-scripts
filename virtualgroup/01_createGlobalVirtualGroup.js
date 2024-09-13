@@ -12,13 +12,16 @@ export const main = async () => {
     const provider = new ethers.JsonRpcProvider(rpc);
 
     // input params
-    const privateKey = "ebbeb28b89bc7ec5da6441ed70452cc413f96ea33a7c790aba06810ae441b776"
+    const privateKey =
+      'ebbeb28b89bc7ec5da6441ed70452cc413f96ea33a7c790aba06810ae441b776';
     const wallet = new ethers.Wallet(privateKey, provider);
     const familyId = 0;
-    const secondarySpIds = [2, 3, 4, 5, 6, 7];
+    const secondarySpIds = rpc.includes('127.0.0.1')
+      ? [2, 3]
+      : [2, 3, 4, 5, 6, 7];
     const deposit = {
       amount: '1000000000000000000',
-      denom: 'ame',
+      denom: 'azkme',
     };
 
     const virtualGroup = new ethers.Contract(virtualGroupAddress, abi, wallet);

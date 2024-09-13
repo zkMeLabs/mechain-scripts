@@ -35,7 +35,9 @@ export const main = async () => {
     fs.writeFileSync(filePath, data);
     const fileBuffer = fs.readFileSync(filePath);
     const extname = path.extname(filePath);
-    const rs = new ReedSolomon();
+    const rs = rpc.includes('127.0.0.1')
+      ? new ReedSolomon(1, 1)
+      : new ReedSolomon();
 
     // input params
     const wallet = new ethers.Wallet(privateKey, provider);
