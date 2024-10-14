@@ -13,7 +13,7 @@ export const main = async () => {
 
   // input params
   const gov = new ethers.Contract(govAddress, abi, provider);
-  const proposalId = 4;
+  const proposalId = 1;
   const proposal = await gov.proposal(proposalId);
   console.log('proposal:', proposal.toObject(true));
 };
