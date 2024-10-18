@@ -8,21 +8,23 @@ import { utf8ToBytes } from 'ethereum-cryptography/utils.js';
 
 export const main = async () => {
   try {
-    const filePath = './uploadObject/temp.txt';
-    const fileBuffer = fs.readFileSync(filePath);
+
     const { bucketName, objectName, privateKey, rpc, contracts, storageAddress, virtualGroupAddress } =
       await fs.readJSON('../cfg.json');
 
     const { abi: storageAbi } = await fs.readJSON(
-      path.join(contracts, 'storage/IStorage.sol/IStorage.json'),
+      path.join(contracts, 'storage/IStorage.sol/IStorage.json')
     );
     const { abi: virtualGroupAbi } = await fs.readJSON(
-      path.join(contracts, 'virtualgroup/IVirtualGroup.sol/IVirtualGroup.json'),
+      path.join(contracts, 'virtualgroup/IVirtualGroup.sol/IVirtualGroup.json')
     );
     const provider = new ethers.JsonRpcProvider(rpc);
     const storage = new ethers.Contract(storageAddress, storageAbi, provider);
     const [bucketInfo, extraInfo] = await storage.headBucket(bucketName);
     let globalVirtualGroupFamilyId = bucketInfo.globalVirtualGroupFamilyId;
+
+    const filePath = path.join('.', 'uploadObject', objectName);
+    const fileBuffer = fs.readFileSync(filePath);
 
     const pageRequest = {
       key: '0x00',
@@ -99,7 +101,7 @@ export const main = async () => {
         if (response.ok) {
           console.log('File data sent successfully!');
         } else {
-          console.error('Failed to send file data:', response.status);
+          console.error('Failed to send file data:', response.statusText);
         }
       })
       .catch((error) => {

@@ -5,8 +5,7 @@ import { lookup } from 'mime-types';
 import { ReedSolomon } from '@bnb-chain/reed-solomon';
 
 export const randData = (size) => {
-  const characters =
-    '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
   let result = '';
   for (let i = 0; i < size; i++) {
     const randomIndex = Math.floor(Math.random() * characters.length);
@@ -17,27 +16,18 @@ export const randData = (size) => {
 
 export const main = async () => {
   try {
-    const {
-      rpc,
-      contracts,
-      storageAddress,
-      privateKey,
-      bucketName,
-      objectName,
-    } = await fs.readJSON('../cfg.json');
-    const { abi } = await fs.readJSON(
-      path.join(contracts, 'storage/IStorage.sol/IStorage.json'),
-    );
+    const { rpc, contracts, storageAddress, privateKey, bucketName, objectName, } = await fs.readJSON('../cfg.json');
+    const { abi } = await fs.readJSON(path.join(contracts, 'storage/IStorage.sol/IStorage.json'));
     const provider = new ethers.JsonRpcProvider(rpc);
 
-    const filePath = path.join('.', 'uploadObject', 'temp.txt');
+    const filePath = path.join('.', 'uploadObject', objectName);
     const data = randData(16);
     fs.writeFileSync(filePath, data);
     const fileBuffer = fs.readFileSync(filePath);
     const extname = path.extname(filePath);
     const rs = rpc.includes('127.0.0.1')
       ? new ReedSolomon(1, 1)
-      : new ReedSolomon();
+      : new ReedSolomon(1, 1);
 
     // input params
     const wallet = new ethers.Wallet(privateKey, provider);

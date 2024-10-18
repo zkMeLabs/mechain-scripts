@@ -1,4 +1,7 @@
-cfg.json
 package-lock.json
 node_modules
 .vscode
+.idea
+
+cfg.json
+cfg.testnet.json

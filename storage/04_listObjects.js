@@ -3,7 +3,7 @@ import fs from 'fs-extra';
 import path from 'path';
 
 export const main = async () => {
-  const { rpc, contracts, storageAddress } = await fs.readJSON('../cfg.json');
+  const { rpc, contracts, storageAddress, bucketName } = await fs.readJSON('../cfg.json');
   const { abi } = await fs.readJSON(
     path.join(contracts, 'storage/IStorage.sol/IStorage.json'),
   );
@@ -17,7 +17,6 @@ export const main = async () => {
     countTotal: false,
     reverse: false,
   };
-  const bucketName = 'zkme';
 
   const storage = new ethers.Contract(storageAddress, abi, provider);
   const [objects, pageResponse] = await storage.listObjects(
