@@ -148,7 +148,7 @@ export const main = async () => {
   };
 
   const bridge = {
-    '@type': '/greenfield.bridge.MsgUpdateParams',
+    '@type': '/mechain.bridge.MsgUpdateParams',
     authority: '0x7b5Fe22B5446f7C62Ea27B8BD71CeF94e03f3dF2',
     params: {
       bsc_transfer_out_relayer_fee: '60000000000000',
@@ -157,7 +157,7 @@ export const main = async () => {
   };
 
   const challenge = {
-    '@type': '/greenfield.challenge.MsgUpdateParams',
+    '@type': '/mechain.challenge.MsgUpdateParams',
     authority: '0x7b5Fe22B5446f7C62Ea27B8BD71CeF94e03f3dF2',
     params: {
       challenge_count_per_block: '6',
@@ -235,7 +235,7 @@ export const main = async () => {
   };
 
   const payment = {
-    '@type': '/greenfield.payment.MsgUpdateParams',
+    '@type': '/mechain.payment.MsgUpdateParams',
     authority: '0x7b5Fe22B5446f7C62Ea27B8BD71CeF94e03f3dF2',
     params: {
       versioned_params: {
@@ -253,7 +253,7 @@ export const main = async () => {
   };
 
   const permission = {
-    '@type': '/greenfield.permission.MsgUpdateParams',
+    '@type': '/mechain.permission.MsgUpdateParams',
     authority: '0x7b5Fe22B5446f7C62Ea27B8BD71CeF94e03f3dF2',
     params: {
       maximum_statements_num: '100',
@@ -263,7 +263,7 @@ export const main = async () => {
   };
 
   const sp = {
-    '@type': '/greenfield.sp.MsgUpdateParams',
+    '@type': '/mechain.sp.MsgUpdateParams',
     authority: '0x7b5Fe22B5446f7C62Ea27B8BD71CeF94e03f3dF2',
     params: {
       deposit_denom: 'azkme',
@@ -278,7 +278,7 @@ export const main = async () => {
   };
 
   const storage = {
-    '@type': '/greenfield.storage.MsgUpdateParams',
+    '@type': '/mechain.storage.MsgUpdateParams',
     authority: '0x7b5Fe22B5446f7C62Ea27B8BD71CeF94e03f3dF2',
     params: {
       versioned_params: {
@@ -349,7 +349,7 @@ export const main = async () => {
   };
 
   const virtualgroup = {
-    '@type': '/greenfield.virtualgroup.MsgUpdateParams',
+    '@type': '/mechain.virtualgroup.MsgUpdateParams',
     authority: '0x7b5Fe22B5446f7C62Ea27B8BD71CeF94e03f3dF2',
     params: {
       deposit_denom: 'azkme',
