@@ -6,6 +6,7 @@ BigInt.prototype.toJSON = function () {
   return this.toString();
 };
 
+// http://127.0.0.1:1317/cosmos/staking/v1beta1/validators
 export const main = async () => {
   const { rpc, contracts, govAddress, denom } = await fs.readJSON('../cfg.json');
   const { abi } = await fs.readJSON(path.join(contracts, 'gov/IGov.sol/IGov.json'));
@@ -31,15 +32,15 @@ export const main = async () => {
       max_change_rate: '0.010000000000000000',
     },
     min_self_delegation: '1',
-    delegator_address: '0x9923C9ce3c605e9B8CE14B64CE4cfb39f5bd7DC9',
-    validator_address: '0xA6CEd47a79832412a633003D92D203485964936F',
+    delegator_address: '0x00000Be6819f41400225702D32d3dd23663Dd690',
+    validator_address: '0x00000Be6819f41400225702D32d3dd23663Dd690',
     pubkey: {
       '@type': '/cosmos.crypto.ed25519.PubKey',
       key: 'Kh9oDVjXzp+FIz9p2cQ42ECE9rwPPqHH3TmUEOXPBj0=',
     },
     value: {
       denom: 'azkme',
-      amount: '10000000000000000000000000',
+      amount: '1',
     },
     from: '0x7b5Fe22B5446f7C62Ea27B8BD71CeF94e03f3dF2',
     relayer_address: '0x11FF7D9D45911C08Ff764034Ab606a3901161835',

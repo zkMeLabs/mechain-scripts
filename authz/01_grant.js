@@ -13,7 +13,7 @@ export const main = async () => {
 
   {
     // for create a new validator
-    const privateKey = 'e54bff83fc945cba77ca3e45d69adc5b57ad8db6073736c8422692abecfb5fe2';
+    const privateKey = 'f78a036930ce63791ea6ea20072986d8c3f16a6811f6a2583b0787c45086f769';
     const wallet = new ethers.Wallet(privateKey, provider);
     const authz = new ethers.Contract(authzAddress, abi, wallet);
 

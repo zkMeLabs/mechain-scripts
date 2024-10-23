@@ -6,6 +6,7 @@ BigInt.prototype.toJSON = function () {
   return this.toString();
 };
 
+// http://127.0.0.1:1317/greenfield/storage_provider/4
 export const main = async () => {
   const { rpc, contracts, govAddress, denom } = await fs.readJSON('../cfg.json');
   const { abi } = await fs.readJSON(path.join(contracts, 'gov/IGov.sol/IGov.json'));
@@ -47,8 +48,8 @@ export const main = async () => {
 
   const messages = JSON.stringify([MsgCreateStorageProvider]); // update you msg here
   const metadata = 'Just Test Proposal';
-  const title = 'create validator1';
-  const summary = 'use proposal create validator1';
+  const title = 'create storage provider';
+  const summary = 'use proposal create storage provider';
   const initialDeposit = [
     {
       denom,

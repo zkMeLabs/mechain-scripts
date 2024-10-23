@@ -6,6 +6,7 @@ BigInt.prototype.toJSON = function () {
   return this.toString();
 };
 
+// http://127.0.0.1:1317/cosmos/gov/v1/proposals/1
 export const main = async () => {
   const { rpc, contracts, govAddress } = await fs.readJSON('../cfg.json');
   const { abi } = await fs.readJSON(path.join(contracts, 'gov/IGov.sol/IGov.json'));
