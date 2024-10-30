@@ -16,7 +16,7 @@ export const randData = (size) => {
 
 export const main = async () => {
   try {
-    const { rpc, contracts, storageAddress, privateKey, bucketName, objectName, } = await fs.readJSON('../cfg.json');
+    const { rpc, contracts, storageAddress, privateKey, bucketName, objectName } = await fs.readJSON('../cfg.json');
     const { abi } = await fs.readJSON(path.join(contracts, 'storage/IStorage.sol/IStorage.json'));
     const provider = new ethers.JsonRpcProvider(rpc);
 
@@ -25,9 +25,7 @@ export const main = async () => {
     fs.writeFileSync(filePath, data);
     const fileBuffer = fs.readFileSync(filePath);
     const extname = path.extname(filePath);
-    const rs = rpc.includes('127.0.0.1')
-      ? new ReedSolomon(1, 1)
-      : new ReedSolomon(1, 1);
+    const rs = rpc.includes('127.0.0.1') ? new ReedSolomon(1, 1) : new ReedSolomon(1, 1);
 
     // input params
     const wallet = new ethers.Wallet(privateKey, provider);
@@ -40,25 +38,14 @@ export const main = async () => {
       sig: '0x00',
     };
 
-    console.log(
-      `bucketName = ${bucketName}, objectName = ${objectName}, data = ${data}`,
-    );
+    console.log(`bucketName = ${bucketName}, objectName = ${objectName}, data = ${data}`);
 
     // const expectChecksums = await rs.encodeInWorker(filePath, Uint8Array.from(fileBuffer));
     const expectChecksums = rs.encode(Uint8Array.from(fileBuffer));
     const redundancyType = 0;
 
     const storage = new ethers.Contract(storageAddress, abi, wallet);
-    const tx = await storage.createObject(
-      bucketName,
-      objectName,
-      payloadSize,
-      visibility,
-      contentType,
-      approval,
-      expectChecksums,
-      redundancyType,
-    );
+    const tx = await storage.createObject(bucketName, objectName, payloadSize, visibility, contentType, approval, expectChecksums, redundancyType);
     const receipt = await tx.wait();
     console.log('create object success, receipt: ', receipt);
   } catch (error) {

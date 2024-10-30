@@ -16,19 +16,15 @@ const main = async () => {
   const extname = path.extname(filePath);
   const contentType = lookup(extname);
 
-  console.log(
-    `bucketName = ${bucketName}, objectName = ${objectName}, data = ${fileBuffer.toString()}`,
-  );
+  console.log(`bucketName = ${bucketName}, objectName = ${objectName}, data = ${fileBuffer.toString()}`);
 
   // input params
-  const privateKey =
-    '0xf78a036930ce63791ea6ea20072986d8c3f16a6811f6a2583b0787c45086f769'; // YOU PRIVATE KEY
+  const privateKey = '0xf78a036930ce63791ea6ea20072986d8c3f16a6811f6a2583b0787c45086f769'; // YOU PRIVATE KEY
 
   // putObject
   const client = Client.create('http://localhost:26657', '5151');
   const endpoint = 'http://node1.dev:9033';
-  const txnHash =
-    'D044FDCC1A3F3F79F5CC18EF5C47A42F41C6F2D9B0A3EBC59B4969819BE86938';
+  const txnHash = '';
 
   const uploadRes = await client.object.uploadObject(
     {
@@ -60,12 +56,7 @@ const main = async () => {
   http
     .get(`${endpoint}/${bucketName}/${objectName}`, (res) => {
       res.on('data', (data) => {
-        console.log(
-          'statusCode:',
-          res.statusCode,
-          'data = ',
-          data.toString(),
-        );
+        console.log('statusCode:', res.statusCode, 'data = ', data.toString());
       });
     })
     .on('error', (e) => {
