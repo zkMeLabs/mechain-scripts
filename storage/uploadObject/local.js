@@ -9,9 +9,9 @@ const sleep = (ms) => {
 };
 
 const main = async () => {
-  const { bucketName, objectName } = await fs.readJSON('../../cfg.json');
+  const { bucketName, objectName } = await fs.readJSON('/Users/lcq/Code/zkme/mechain-scripts/cfg.json' || '../../cfg.json');
 
-  const filePath = path.join('.', 'temp.txt');
+  const filePath = `/Users/lcq/Code/zkme/mechain-scripts/storage/uploadObject/${objectName}` || path.join('.', 'temp.txt');
   const fileBuffer = fs.readFileSync(filePath);
   const extname = path.extname(filePath);
   const contentType = lookup(extname);

@@ -2,6 +2,7 @@
   "rpc": "http://127.0.0.1:8545",
   "contracts": "/Users/xxx/Code/zkme/mechain/solidity/artifacts/contracts",
   "denom": "azkme",
+  "bankAddress": "0x0000000000000000000000000000000000001000",
   "govAddress": "0x0000000000000000000000000000000000001002",
   "stakingAddress": "0x0000000000000000000000000000000000001003",
   "authzAddress": "0x0000000000000000000000000000000000001008",
