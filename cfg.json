@@ -1,0 +1,18 @@
+{
+  "rpc": "https://testnet-rpc.mechain.tech:443",
+  "contracts": "/your/path/zkMeLabs/mechain/solidity/artifacts/contracts",
+  "denom": "azkme",
+  "bankAddress": "0x0000000000000000000000000000000000001000",
+  "govAddress": "0x0000000000000000000000000000000000001002",
+  "stakingAddress": "0x0000000000000000000000000000000000001003",
+  "authzAddress": "0x0000000000000000000000000000000000001008",
+  "virtualGroupAddress": "0x0000000000000000000000000000000000002000",
+  "storageAddress": "0x0000000000000000000000000000000000002001",
+  "spAddress": "0x0000000000000000000000000000000000002002",
+  "primarySpAddress": "0x1Ba86D47193Ad486d9839c7d4ee561c0C33ca184",
+  "privateKey": "account private key",
+  "sealAddress": "account address",
+  "bucketName": "b-kevin",
+  "objectName": "o_kevin.txt",
+  "groupName": "g-kevin"
+}
