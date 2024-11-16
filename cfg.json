@@ -1,6 +1,6 @@
 {
-  "rpc": "https://devint-rpc.mechain.tech:443",
-  "contracts": "/Users/gongsi/Developer/yssn/zkMeLabs/mechain/solidity/artifacts/contracts",
+  "rpc": "https://testnet-rpc.mechain.tech:443",
+  "contracts": "/your/path/zkMeLabs/mechain/solidity/artifacts/contracts",
   "denom": "azkme",
   "bankAddress": "0x0000000000000000000000000000000000001000",
   "govAddress": "0x0000000000000000000000000000000000001002",
@@ -9,11 +9,10 @@
   "virtualGroupAddress": "0x0000000000000000000000000000000000002000",
   "storageAddress": "0x0000000000000000000000000000000000002001",
   "spAddress": "0x0000000000000000000000000000000000002002",
-  "primarySpAddress": "0xA99d5bA31bFDaea0Dc852D7c1F8d64BDEf085814",
-  "primarySpPrivateKey": "202f0662861336ddd4a43cfb434496f9ad1a0c06b3b1caac6018640e4508297d",
-  "sealAddress": "0x1111102Dd32160B064F2A512CDEf74bFdB6a9F96",
-  "privateKey": "f78a036930ce63791ea6ea20072986d8c3f16a6811f6a2583b0787c45086f769",
+  "primarySpAddress": "0x1Ba86D47193Ad486d9839c7d4ee561c0C33ca184",
+  "privateKey": "account private key",
+  "sealAddress": "account address",
   "bucketName": "b-kevin",
-  "objectName": "kevin.txt",
+  "objectName": "o_kevin.txt",
   "groupName": "g-kevin"
 }
