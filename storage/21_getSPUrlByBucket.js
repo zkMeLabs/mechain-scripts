@@ -3,7 +3,7 @@ import fs from 'fs-extra';
 import path from 'path';
 
 export const main = async () => {
-  const { rpc, contracts, storageAddress, virtualGroupAddress, spAddress, bucketName, objectName } = await fs.readJSON('../cfg.json');
+  const { rpc, contracts, storageAddress, virtualGroupAddress, spAddress, bucketName } = await fs.readJSON('../cfg.json');
   const { abi: abiStorage } = await fs.readJSON(path.join(contracts, 'storage/IStorage.sol/IStorage.json'));
   const { abi: abiVirtualGroup } = await fs.readJSON(path.join(contracts, 'virtualgroup/IVirtualGroup.sol/IVirtualGroup.json'));
   const { abi: abiSp } = await fs.readJSON(path.join(contracts, 'storageprovider/IStorageProvider.sol/IStorageProvider.json'));
@@ -33,8 +33,8 @@ export const main = async () => {
     };
     const [sps, __] = await sp.storageProviders(pageRequest);
     for (const item of sps) {
-      console.log('storage provider', item.toObject(true));
-      if (item.id == gvgfamily.id) {
+      if (item.id == gvgfamily.primarySpId) {
+        console.log('storage provider', item.toObject(true));
         return item.endpoint;
       }
     }
